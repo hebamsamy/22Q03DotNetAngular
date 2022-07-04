@@ -1,0 +1,12 @@
+.red{
+    color: red;
+}
+.d{
+    display: block;
+    text-decoration: underline;
+}
+
+.isDone{
+    color: green;
+    text-decoration: line-through;
+}

@@ -1,0 +1,12 @@
+<div class="container">
+    <p class="display-1">To Do task app</p>
+    <p>you have {{tasks.length}} tasks</p>
+    <input class="form-control" type="text" [(ngModel)]="text">
+    <span [hidden]="text.length>3" [ngClass]="{'red d': text.length<=3}">must have at least 3 letter</span>
+    <button (click)="add()" class="btn btn-info">Add</button>
+    <div class="card border" *ngFor="let item of tasks">
+        <div class="card-body col-8" [ngClass]="{isDone: item.IsDone}">{{item.Title}}</div>
+        <input type="checkbox" class="form-checkbox col-1"  (change)="change(item.Id)" [checked]="item.IsDone">
+        <button class="btn btn-danger col-3" (click)="del(item.Id)">del</button>
+    </div>
+</div>
