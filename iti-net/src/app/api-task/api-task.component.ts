@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ResultViewModel } from '../models/config';
+import { ResultViewModel } from '../models/ResultViewModel';
 import { ApiTask } from '../models/task';
 import { TaskServices } from '../Services/TextService';
 

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -9,6 +9,14 @@ import { NavComponent } from './nav/nav.component';
 import { ApiTaskComponent } from './api-task/api-task.component';
 import {HttpClientModule} from'@angular/common/http'
 import { TaskServices } from './Services/TextService';
+import { CreateStudentComponent } from './Components/Student/create-student/create-student.component';
+import { EditStudentComponent } from './Components/Student/edit-student/edit-student.component';
+import { StudentDetailsComponent } from './Components/Student/student-details/student-details.component';
+import { StudentListComponent } from './Components/Student/student-list/student-list.component';
+import { FooterComponent } from './footer/footer.component';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { AppRoutingModule } from './AppRouting';
+import { StudentServices } from './Services/StudentServices';
 
 @NgModule({
   declarations: [
@@ -17,14 +25,23 @@ import { TaskServices } from './Services/TextService';
     TaskComponent,
     NavComponent,
     ApiTaskComponent,
+    CreateStudentComponent,
+    EditStudentComponent,
+    StudentDetailsComponent,
+    StudentListComponent,
+    FooterComponent,
+    NotfoundComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [
-    TaskServices
+    TaskServices,
+    StudentServices
   ],
   bootstrap: [AppComponent]
 })

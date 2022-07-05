@@ -1,0 +1,49 @@
+<h1 *ngIf="!isEdit">add Student</h1>
+<h1 *ngIf="isEdit">Update Student</h1>
+
+<div *ngIf="Loading" class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+</div>
+
+<form *ngIf="!Loading" [formGroup]="form" (submit)="add()">
+    <div class="mb-3">
+        <label for="NationalID" class="form-label">National ID </label>
+        <input type="text" class="form-control" formControlName="NationalID">
+        <span class="text-danger" *ngIf="form.controls['NationalID'].hasError('required')">Required ID</span>
+        <span class="text-danger" *ngIf="form.controls['NationalID'].hasError('minlength')">Min length 15 Digit</span>
+        <span class="text-danger" *ngIf="form.controls['NationalID'].hasError('maxlength')">Max length 17 Digit</span>
+    </div>
+    <div class="mb-3">
+        <label for="FirstName" class="form-label">First Name </label>
+        <input type="text" class="form-control" formControlName="FirstName">
+        <span class="text-danger" *ngIf="form.controls['FirstName'].hasError('required')">Required First Name</span>
+    </div>
+    <div class="mb-3">
+        <label for="LastName" class="form-label">Last Name </label>
+        <input type="text" class="form-control" formControlName="LastName">
+        <span class="text-danger" *ngIf="form.controls['LastName'].hasError('required')">Required First Name</span>
+
+    </div>
+    <div class="mb-3">
+        <label for="Email" class="form-label">Email address</label>
+        <input type="email" class="form-control" formControlName="Email" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        <span class="text-danger" *ngIf="form.controls['Email'].hasError('required')">Required email</span>
+        <span class="text-danger" *ngIf="form.controls['Email'].hasError('email')">must be an Email adde</span>
+    
+    </div>
+    <div class="mb-3">
+        <label for="Mobile" class="form-label">Mobile </label>
+        <input type="number" class="form-control" formControlName="Mobile">
+        <span class="text-danger" *ngIf="form.controls['Mobile'].hasError('required')">Required Mobile</span>
+        <span class="text-danger" *ngIf="form.controls['Mobile'].hasError('minlength')">min length 11</span>
+        <span class="text-danger" *ngIf="form.controls['Mobile'].hasError('maxlength')">max length 15</span>
+
+    </div>
+    <div class="mb-3">
+        <label for="Age" class="form-label">Age </label>
+        <input type="number" class="form-control" formControlName="Age">
+        <span class="text-danger" *ngIf="form.controls['Age'].hasError('required')">Required Age</span>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Submit</button>
+</form>
