@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
 import { loginViewModel, SignUpViewModel } from "../models/Account";
@@ -24,8 +24,13 @@ export class AccountServices{
         return this.http.post<ResultViewModel>(environment.apiURl+'user/post',log);
     }
     logout(){
-        let token=localStorage.getItem('token')
-        return this.http.post<ResultViewModel>(`${environment.apiURl}user/logout?token=${token}`,null);
+        let token=localStorage.getItem('token');
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'token': `${token}`,
+         });
+        let options = { headers: headers };
+        return this.http.post<ResultViewModel>(`${environment.apiURl}user/logout`,null,options);
     }
     IsLoggedIn():boolean{
         let token =localStorage.getItem('token')

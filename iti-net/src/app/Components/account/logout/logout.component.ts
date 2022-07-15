@@ -16,15 +16,11 @@ export class LogoutComponent implements OnInit {
       res=> {
         localStorage.removeItem('token');
         localStorage.removeItem('username');
-        //
+        this.acc.setLooggedStatus(false);
         this.router.navigateByUrl('login')
       },
       err=> console.log(err)
     )
-    localStorage.removeItem('token');
-    localStorage.removeItem('username');
-    this.acc.setLooggedStatus(false);
-    this.router.navigateByUrl('login')
   }
 
 }
