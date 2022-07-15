@@ -21,6 +21,7 @@ import { LoginComponent } from './Components/account/login/login.component';
 import { SignupComponent } from './Components/account/signup/signup.component';
 import { LogoutComponent } from './Components/account/logout/logout.component';
 import { AccountServices } from './Services/Account';
+import { StudentCardComponent } from './Components/Student/student-card/student-card.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { AccountServices } from './Services/Account';
     LoginComponent,
     SignupComponent,
     LogoutComponent,
+    StudentCardComponent,
   ],
   imports: [
     BrowserModule,

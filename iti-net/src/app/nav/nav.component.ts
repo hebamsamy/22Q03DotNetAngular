@@ -12,8 +12,10 @@ export class NavComponent implements OnInit {
   ISLOG:Boolean = false;
   UserName:string = "";
   ngOnInit(): void {
-    this.ISLOG = this.Acc.IsLoggedIn()
-    //
+    //this.ISLOG = this.Acc.IsLoggedIn()
+    this.Acc.getLooggedStatus().subscribe(
+      res=>this.ISLOG = res
+    )
   }
 
 }

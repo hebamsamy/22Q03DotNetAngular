@@ -4,14 +4,6 @@
 <a [routerLink]="['/student/create']"  class="btn btn-success">Create</a>
        
 <div *ngIf="!loading" class="row">
-
-    <div *ngFor="let item of Students" class="card col-4">
-        <div class="card-body">
-            <h5 class="card-title">{{item.Name}}</h5>
-            <p class="card-text">{{item.Email}}</p>
-            <a [routerLink]="['/student/details/',item.ID]"  class="btn btn-info">Details</a>
-            <a [routerLink]="['/student/edit/',item.ID]"  class="btn btn-primary">Updata</a>
-            <a (click)="Delete(item.ID)" class="btn btn-danger">Delete</a>
-        </div>
-    </div>
+    <app-student-card *ngFor="let item of Students" [std]="item" (Del)='Delete(item.ID)' class="card col-4">
+    </app-student-card>
 </div>

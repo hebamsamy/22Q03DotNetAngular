@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, TitleStrategy } from '@angular/router';
 import { AccountServices } from 'src/app/Services/Account';
 
 @Component({
@@ -19,8 +19,12 @@ export class LogoutComponent implements OnInit {
         //
         this.router.navigateByUrl('login')
       },
-      err=> alert(err)
+      err=> console.log(err)
     )
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
+    this.acc.setLooggedStatus(false);
+    this.router.navigateByUrl('login')
   }
 
 }

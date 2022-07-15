@@ -1,0 +1,7 @@
+<div class="card-body">
+        <h5 class="card-title">{{std.Name}}</h5>
+        <p class="card-text">{{std.Email}}</p>
+        <a [routerLink]="['/student/details/',std.ID]"  class="btn btn-info">Details</a>
+        <a [routerLink]="['/student/edit/',std.ID]"  class="btn btn-primary">Updata</a>
+        <a (click)="toBeDelete(std.ID)" class="btn btn-danger">Delete</a>
+    </div>

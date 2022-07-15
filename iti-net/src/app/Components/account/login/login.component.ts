@@ -35,6 +35,7 @@ add(){
     if(res.Success){
       localStorage.setItem('token',res.Data);
       localStorage.setItem('username',log.UserName);
+      this.acc.setLooggedStatus(true);
       this.router.navigateByUrl('/')
     }
     else
