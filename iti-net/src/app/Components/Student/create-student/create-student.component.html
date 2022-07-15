@@ -34,7 +34,7 @@
     </div>
     <div class="mb-3">
         <label for="Mobile" class="form-label">Mobile </label>
-        <input type="number" class="form-control" formControlName="Mobile">
+        <input type="text" class="form-control" formControlName="Mobile">
         <span class="text-danger" *ngIf="form.controls['Mobile'].hasError('required')">Required Mobile</span>
         <span class="text-danger" *ngIf="form.controls['Mobile'].hasError('minlength')">min length 11</span>
         <span class="text-danger" *ngIf="form.controls['Mobile'].hasError('maxlength')">max length 15</span>

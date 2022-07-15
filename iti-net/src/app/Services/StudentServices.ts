@@ -2,13 +2,13 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
 import { ResultViewModel } from "../models/ResultViewModel";
-import { Student, StudentEditViewModel } from "../models/Student";
+import { Student, StudentCreateViewModel, StudentEditViewModel } from "../models/Student";
 
 @Injectable()
 export class StudentServices{
     constructor(private http:HttpClient){}
     url:string=environment.apiURl
-    addStudent(Student:StudentEditViewModel){
+    addStudent(Student:StudentCreateViewModel){
         return this.http.post<ResultViewModel>(this.url+ "Student/post",Student)
     }
     getStudent(){

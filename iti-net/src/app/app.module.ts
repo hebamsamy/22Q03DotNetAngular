@@ -10,7 +10,6 @@ import { ApiTaskComponent } from './api-task/api-task.component';
 import {HttpClientModule} from'@angular/common/http'
 import { TaskServices } from './Services/TextService';
 import { CreateStudentComponent } from './Components/Student/create-student/create-student.component';
-import { EditStudentComponent } from './Components/Student/edit-student/edit-student.component';
 import { StudentDetailsComponent } from './Components/Student/student-details/student-details.component';
 import { StudentListComponent } from './Components/Student/student-list/student-list.component';
 import { FooterComponent } from './footer/footer.component';
@@ -26,7 +25,6 @@ import { StudentServices } from './Services/StudentServices';
     NavComponent,
     ApiTaskComponent,
     CreateStudentComponent,
-    EditStudentComponent,
     StudentDetailsComponent,
     StudentListComponent,
     FooterComponent,

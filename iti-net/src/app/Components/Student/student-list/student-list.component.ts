@@ -14,11 +14,27 @@ export class StudentListComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = true
+   this.show();
+  }
+  show(){
     this.StdServices.getStudent().subscribe(res=>{
       this.Students= res.Data;
       this.loading =false
     })
   }
-  
+  Delete(ID:number){
+    this.loading = true;
+    this.StdServices.deleteStudent(ID).subscribe(
+      res=>{
+        alert(res.Message);
+        this.loading =false
+        this.show();
+      },
+      err=>{
+        alert(err.Message);
+        this.loading =false
+        this.show();
+      });
+  }
 
 }

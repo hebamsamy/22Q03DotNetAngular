@@ -9,8 +9,9 @@
         <div class="card-body">
             <h5 class="card-title">{{item.Name}}</h5>
             <p class="card-text">{{item.Email}}</p>
-            <a [routerLink]="['/student/details/',item.ID]"  class="btn btn-primary">Details</a>
-            <a [routerLink]="['/student/edit/',item.ID]"  class="btn btn-primary">updata</a>
+            <a [routerLink]="['/student/details/',item.ID]"  class="btn btn-info">Details</a>
+            <a [routerLink]="['/student/edit/',item.ID]"  class="btn btn-primary">Updata</a>
+            <a (click)="Delete(item.ID)" class="btn btn-danger">Delete</a>
         </div>
     </div>
 </div>

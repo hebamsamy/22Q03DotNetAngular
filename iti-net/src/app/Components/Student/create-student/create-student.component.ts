@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { Student, StudentEditViewModel } from 'src/app/models/Student';
+import { ActivatedRoute, Router } from '@angular/router';
+import { StudentEditViewModel } from 'src/app/models/Student';
 import { StudentServices } from 'src/app/Services/StudentServices';
 
 @Component({
@@ -13,11 +13,12 @@ export class CreateStudentComponent implements OnInit {
   isEdit = false;
   Loading = false;
   form: FormGroup = new FormGroup([]);
-  std: Student = new Student();
+  
   constructor(
     private builder: FormBuilder,
     private StdService: StudentServices,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router:Router
   ) {}
 
   ngOnInit(): void {
@@ -27,20 +28,19 @@ export class CreateStudentComponent implements OnInit {
     ) {
       this.isEdit = true;
       this.Loading = true;
-      this.StdService.getStudentEditableByID(
-        this.route.snapshot.params['id']
-      ).subscribe((res) => {
-        this.std = res.Data;
+      this.StdService.getStudentEditableByID(this.route.snapshot.params['id']).subscribe((res) => {
+        let std:StudentEditViewModel = res.Data;
         this.Loading = false;
-        this.build();
+        this.build(std);
       });
     }
     this.build();
   }
-  build() {
+  build(std?:StudentEditViewModel) {
+    //if (typeof std !== 'undefined') {}
     this.form = this.builder.group({
       NationalID: [
-        this.std.NationalID || '',
+        std?.NationalID || '',
         [
           Validators.required,
           Validators.minLength(15),
@@ -48,23 +48,23 @@ export class CreateStudentComponent implements OnInit {
         ],
       ],
       FirstName: [
-        this.std.FirstName || '',
+        std?.FirstName || '',
         [Validators.required, Validators.minLength(3)],
       ],
       LastName: [
-        this.std.LastName || '',
+        std?.LastName || '',
         [Validators.required, Validators.minLength(3)],
       ],
-      Email: [this.std.Email || '', [Validators.required, Validators.email]],
+      Email: [std?.Email || '', [Validators.required, Validators.email]],
       Mobile: [
-        this.std.Mobile || '',
+        std?.Mobile || '',
         [
           Validators.required,
           Validators.minLength(11),
           Validators.maxLength(15),
         ],
       ],
-      Age: [this.std.Age || '', [Validators.required]],
+      Age: [std?.Age || '', [Validators.required]],
     });
   }
   add() {
@@ -73,16 +73,16 @@ export class CreateStudentComponent implements OnInit {
     sendStd.LastName = this.form.value['LastName'];
     sendStd.Age = this.form.value['Age'];
     sendStd.Email = this.form.value['Email'];
-    sendStd.Mobile = this.form.value['Mobile'] as number;
+    sendStd.Mobile = this.form.value['Mobile'];
     sendStd.NationalID = this.form.value['NationalID'];
     sendStd.NameArabic= this.form.value['FirstName'] + " " +this.form.value['LastName'];
     sendStd.NameEnglish= this.form.value['FirstName'] + " " +this.form.value['LastName'];
     
     console.log(sendStd)
     if (this.isEdit) {
-      this.StdService.updateStudent(sendStd).subscribe(res=>
-        {
+      this.StdService.updateStudent(sendStd).subscribe(res=>{
           alert(res.Message);
+          this.router.navigate(["/"])
         }
       );
     } else {
