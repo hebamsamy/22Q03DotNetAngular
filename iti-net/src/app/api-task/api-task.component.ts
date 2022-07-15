@@ -13,6 +13,7 @@ export class ApiTaskComponent implements OnInit {
 
   tasks:ApiTask[]=[];
   text:string ='';
+  currentdate = new Date();
   constructor(private ts:TaskServices) { }
 
   ngOnInit(): void {

@@ -16,6 +16,11 @@ import { FooterComponent } from './footer/footer.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { AppRoutingModule } from './AppRouting';
 import { StudentServices } from './Services/StudentServices';
+import { MaxlenghtPipe } from './maxlenght.pipe';
+import { LoginComponent } from './Components/account/login/login.component';
+import { SignupComponent } from './Components/account/signup/signup.component';
+import { LogoutComponent } from './Components/account/logout/logout.component';
+import { AccountServices } from './Services/Account';
 
 @NgModule({
   declarations: [
@@ -29,6 +34,10 @@ import { StudentServices } from './Services/StudentServices';
     StudentListComponent,
     FooterComponent,
     NotfoundComponent,
+    MaxlenghtPipe,
+    LoginComponent,
+    SignupComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +48,8 @@ import { StudentServices } from './Services/StudentServices';
   ],
   providers: [
     TaskServices,
-    StudentServices
+    StudentServices,
+    AccountServices
   ],
   bootstrap: [AppComponent]
 })
