@@ -1,7 +1,7 @@
 import { HttpBackend } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { loginViewModel } from 'src/app/models/Account';
 import { AccountServices } from 'src/app/Services/Account';
 
@@ -12,9 +12,13 @@ import { AccountServices } from 'src/app/Services/Account';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private builder:FormBuilder,private acc:AccountServices,private router:Router) { }
+  constructor(private builder:FormBuilder,private acc:AccountServices,
+    private router:Router,private route:ActivatedRoute) { }
   form:FormGroup = new FormGroup([]);
+  returnURl:string='/';
   ngOnInit(): void {
+    this.route.params.subscribe(res=>this.returnURl=res['id'] as string)
+    alert(this.returnURl)
     this.form = this.builder.group({
       UserName: ['',
         [
@@ -36,7 +40,7 @@ add(){
       localStorage.setItem('token',res.Data);
       localStorage.setItem('username',log.UserName);
       this.acc.setLooggedStatus(true);
-      this.router.navigateByUrl('/')
+      this.router.navigateByUrl(this.returnURl)
     }
     else
     alert('Try again!!!!!!!')

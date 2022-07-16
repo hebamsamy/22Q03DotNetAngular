@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Student } from 'src/app/models/Student';
+import { AccountServices } from 'src/app/Services/Account';
 import { StudentServices } from 'src/app/Services/StudentServices';
 
 @Component({
@@ -10,9 +12,13 @@ import { StudentServices } from 'src/app/Services/StudentServices';
 export class StudentListComponent implements OnInit {
  loading:boolean=true;
   Students:Student[]=[];
-  constructor(private StdServices:StudentServices) { }
+  constructor(private StdServices:StudentServices,private account:AccountServices,private router:Router) { }
 
   ngOnInit(): void {
+    // if(!this.account.IsLoggedIn())
+    // {
+    //     this.router.navigateByUrl('login');
+    // }
     this.loading = true
    this.show();
   }
@@ -36,5 +42,8 @@ export class StudentListComponent implements OnInit {
         this.show();
       });
   }
-
+  Rate(val :number){
+    console.log('list',val)
+    alert(val)
+  }
 }

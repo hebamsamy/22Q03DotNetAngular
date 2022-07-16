@@ -22,6 +22,9 @@ import { SignupComponent } from './Components/account/signup/signup.component';
 import { LogoutComponent } from './Components/account/logout/logout.component';
 import { AccountServices } from './Services/Account';
 import { StudentCardComponent } from './Components/Student/student-card/student-card.component';
+import { RateComponent } from './Components/rate/rate.component';
+import { HomeComponent } from './Components/home/home.component';
+import { UnauthoriedComponent } from './unauthoried/unauthoried.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,9 @@ import { StudentCardComponent } from './Components/Student/student-card/student-
     SignupComponent,
     LogoutComponent,
     StudentCardComponent,
+    RateComponent,
+    HomeComponent,
+    UnauthoriedComponent,
   ],
   imports: [
     BrowserModule,

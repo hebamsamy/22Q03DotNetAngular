@@ -4,6 +4,6 @@
 <a [routerLink]="['/student/create']"  class="btn btn-success">Create</a>
        
 <div *ngIf="!loading" class="row">
-    <app-student-card *ngFor="let item of Students" [std]="item" (Del)='Delete(item.ID)' class="card col-4">
+    <app-student-card *ngFor="let item of Students" [std]="item" [rateval]="3" (reciveRate)="Rate(3)" (Del)='Delete(item.ID)' class="card col-4">
     </app-student-card>
 </div>
