@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { forkJoin } from 'rxjs';
 import { Student } from 'src/app/models/Student';
 import { AccountServices } from 'src/app/Services/Account';
 import { StudentServices } from 'src/app/Services/StudentServices';
@@ -23,6 +24,11 @@ export class StudentListComponent implements OnInit {
    this.show();
   }
   show(){
+    // forkJoin(this.StdServices.getStudent(),this.StdServices.getStudentById(858)).subscribe(
+    //   res=>{
+    //     console.log(res[0])
+    //     console.log(res[1])
+    // })
     this.StdServices.getStudent().subscribe(res=>{
       this.Students= res.Data;
       this.loading =false

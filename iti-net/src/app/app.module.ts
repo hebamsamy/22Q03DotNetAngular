@@ -46,6 +46,7 @@ import { UnauthoriedComponent } from './unauthoried/unauthoried.component';
     RateComponent,
     HomeComponent,
     UnauthoriedComponent,
+
   ],
   imports: [
     BrowserModule,

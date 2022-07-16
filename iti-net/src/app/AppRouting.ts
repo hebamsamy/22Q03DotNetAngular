@@ -23,6 +23,11 @@ const myAppRoutes :Routes = [
     {path:"student/details/:id",component:StudentDetailsComponent},
     {path:"apitask",component:ApiTaskComponent},
     {path:"todo",component:TaskComponent},
+    {
+        path: 'dapartment', 
+        loadChildren: () => import('./Components/department/department.module').then(m => m.DepartmentModule),
+        canActivate:[AuthGuard]
+    },
     {path:"**",component:NotfoundComponent},
 ]
 @NgModule({
