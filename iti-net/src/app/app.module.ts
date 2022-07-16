@@ -1,30 +1,22 @@
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { DemoComponent } from './demo.component';
 import { TaskComponent } from './task/task.component';
 import { NavComponent } from './nav/nav.component';
 import { ApiTaskComponent } from './api-task/api-task.component';
-import {HttpClientModule} from'@angular/common/http'
 import { TaskServices } from './Services/TextService';
-import { CreateStudentComponent } from './Components/Student/create-student/create-student.component';
-import { StudentDetailsComponent } from './Components/Student/student-details/student-details.component';
-import { StudentListComponent } from './Components/Student/student-list/student-list.component';
 import { FooterComponent } from './footer/footer.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { AppRoutingModule } from './AppRouting';
 import { StudentServices } from './Services/StudentServices';
-import { MaxlenghtPipe } from './maxlenght.pipe';
 import { LoginComponent } from './Components/account/login/login.component';
 import { SignupComponent } from './Components/account/signup/signup.component';
 import { LogoutComponent } from './Components/account/logout/logout.component';
 import { AccountServices } from './Services/Account';
-import { StudentCardComponent } from './Components/Student/student-card/student-card.component';
-import { RateComponent } from './Components/rate/rate.component';
 import { HomeComponent } from './Components/home/home.component';
 import { UnauthoriedComponent } from './unauthoried/unauthoried.component';
+import { SharedModule } from './shared.module';
 
 @NgModule({
   declarations: [
@@ -33,27 +25,18 @@ import { UnauthoriedComponent } from './unauthoried/unauthoried.component';
     TaskComponent,
     NavComponent,
     ApiTaskComponent,
-    CreateStudentComponent,
-    StudentDetailsComponent,
-    StudentListComponent,
     FooterComponent,
     NotfoundComponent,
-    MaxlenghtPipe,
     LoginComponent,
     SignupComponent,
     LogoutComponent,
-    StudentCardComponent,
-    RateComponent,
     HomeComponent,
     UnauthoriedComponent,
-
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    HttpClientModule,
+    SharedModule,
     AppRoutingModule,
-    ReactiveFormsModule
   ],
   providers: [
     TaskServices,

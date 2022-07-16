@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
+
 import { CreateComponent } from './create/create.component';
 import { DetailsComponent } from './details/details.component';
 import { ListComponent } from './list/list.component';
+import { SharedModule } from 'src/app/shared.module';
 
 let DepRoute:Routes=[
   {path:'',component:ListComponent},
@@ -16,8 +18,10 @@ let DepRoute:Routes=[
   declarations: [    
     CreateComponent,
     DetailsComponent,
-    ListComponent,],
+    ListComponent,
+  ],
   imports: [
+    SharedModule,
     CommonModule,RouterModule.forChild(DepRoute)
   ]
 })

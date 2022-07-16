@@ -82,12 +82,13 @@ export class CreateStudentComponent implements OnInit {
     if (this.isEdit) {
       this.StdService.updateStudent(sendStd).subscribe(res=>{
           alert(res.Message);
-          this.router.navigate(["/"])
+          this.router.navigate(["/student"])
         }
       );
     } else {
       this.StdService.addStudent(sendStd).subscribe(res=>{
-        alert(res.Message)
+        alert(res.Message);
+        this.router.navigate(["/student"])
       });
     }
   }
